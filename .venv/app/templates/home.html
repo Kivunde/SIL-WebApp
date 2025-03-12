@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome, {{ current_user.id }}!</p>
+    <a href="{{ url_for('user') }}">View Users</a>
+    <a href="{{ url_for('album') }}">View Albums</a>
+    <a href="{{ url_for('photo') }}">View Photos</a>
+{% endblock %}
