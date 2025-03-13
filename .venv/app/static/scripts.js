@@ -1,4 +1,4 @@
-// Load more photos (example for pagination)
+// Load more photos 
 document.addEventListener('DOMContentLoaded', function () {
     const loadMoreButton = document.getElementById('load-more');
     if (loadMoreButton) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Search functionality (example)
+    // Search functionality
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.addEventListener('input', function () {

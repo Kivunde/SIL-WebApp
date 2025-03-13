@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Albums</h1>
+    <h2>Albums</h2>
+    <div class="search-bar">
+        <form method="GET" action="{{ url_for('album') }}">
+            
+            <input type="text" name="search" id="search-input" placeholder="Search albums..." value="{{ request.args.get('search', '') }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
     <ul>
         {% for album in albums %}
             <li>{{ album.title }}</li>
         {% endfor %}
     </ul>
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('album', search=request.args.get('search', ''), page=page-1) }}">Previous</a>
+        {% endif %}
+        {% if has_next %}
+            <a href="{{ url_for('album', search=request.args.get('search', ''), page=page+1) }}">Next</a>
+        {% endif %}
+    </div>
 {% endblock %}

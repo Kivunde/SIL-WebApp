@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Photos</h1>
+    <h2>Photos</h2>
+    <div class="search-bar">
+        <form method="GET" action="{{ url_for('photo') }}">
+            
+            <input type="text" name="search" id="search-input" placeholder="Search photos..." value="{{ request.args.get('search', '') }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
     <ul>
         {% for photo in photos %}
             <li>
@@ -9,4 +16,12 @@
             </li>
         {% endfor %}
     </ul>
-{% endblock %}
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('photo', search=request.args.get('search', ''), page=page-1) }}">Previous</a>
+        {% endif %}
+        {% if has_next %}
+            <a href="{{ url_for('photo', search=request.args.get('search', ''), page=page+1) }}">Next</a>
+        {% endif %}
+    </div>
+{% endblock %}    
